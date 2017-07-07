@@ -13,9 +13,9 @@ except:
 try:
 	import urllib.request as urRequest
 except:
-	print('[X] Module urrlib.request')
+	print('[X] Module urrlib.request not found')
 	exit()
-	
+
 from sys import argv
 
 standardLenArgv = 3
