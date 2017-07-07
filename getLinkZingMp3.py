@@ -1,6 +1,21 @@
-import requests
-import re
-import urllib.request as urRequest
+try:
+	import requests
+except:
+	print('[X] Module requests not found.')
+	exit()
+
+try:
+	import re
+except:
+	print('[X] Module re not found.')
+	exit()
+
+try:
+	import urllib.request as urRequest
+except:
+	print('[X] Module urrlib.request')
+	exit()
+	
 from sys import argv
 
 standardLenArgv = 3
