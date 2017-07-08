@@ -43,6 +43,8 @@ try:
 	matchTitle = re.search(regexTitle, HTMLOri)
 	if matchTitle is not None:
 		filenameToSave = matchTitle.group().rstrip(' |').replace('<title>', '') + '.mp3'
+		filenameToSave = filenameToSave.replace('/', ' - ')
+		filenameToSave = filenameToSave.replace('\\', ' - ')
 	else:
 		filenameToSave = 'Unknow.mp3'
 
