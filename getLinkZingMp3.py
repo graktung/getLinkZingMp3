@@ -85,7 +85,7 @@ else:
 	print('[X] Cannot find {}'.format("'Link Source'"))
 	exit()
 
-print('[*] Saving file...')
+print('[*] Saving %r...' % filenameToSave)
 try:
 	urRequest.urlretrieve(linkSource, filenameToSave)
 	print('==> File is saved succesfully!')
