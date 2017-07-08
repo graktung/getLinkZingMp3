@@ -47,7 +47,6 @@ try:
 		filenameToSave = filenameToSave.replace('\\', ' - ')
 	else:
 		filenameToSave = 'Unknow.mp3'
-
 except:
 	print('[X] Something went wrong when trying to get source from', oriLink)
 	exit()
@@ -74,7 +73,7 @@ except:
 	exit()
 
 print('[*] Get link source...')
-regexSource = r'http:\/\/zmp3-mp3-s1-tr.zadn.vn\/\w+\/\w+\?key=\w+&expires=\d+'
+regexSource = r'http:\/\/zmp3-mp3-s1-tr\.zadn\.vn\/.+\/.+\?key=.+&expires=\d+'
 matchSource = re.search(regexSource, HTMLXML)
 
 if matchSource is not None:
