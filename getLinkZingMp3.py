@@ -45,8 +45,10 @@ try:
 		filenameToSave = matchTitle.group().rstrip(' |').replace('<title>', '') + '.mp3'
 		filenameToSave = filenameToSave.replace('/', ' - ')
 		filenameToSave = filenameToSave.replace('\\', ' - ')
+		if len(filenameToSave) > 100:
+			filenameToSave = 'filenameTooLong.mp3'
 	else:
-		filenameToSave = 'Unknow.mp3'
+		filenameToSave = 'Unknowed.mp3'
 except:
 	print('[X] Something went wrong when trying to get source from', oriLink)
 	exit()
