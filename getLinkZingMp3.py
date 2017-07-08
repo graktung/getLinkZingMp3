@@ -32,9 +32,12 @@ if len(argv) == standardLenArgv:
 	oriLink = argv[1]
 	print('[+] LinkOfSong:', oriLink)
 else:
-	print("[X] run script by command:\n\
-		==> python getLinkZingMp3.py linkOfSong")
-	exit()
+	if len(argv) == 1:
+		oriLink = input('Enter the link of song: ')
+	else:
+		print("[X] run script by command:\n\
+			==> python getLinkZingMp3.py linkOfSong")
+		exit()
 
 try:
 	requestOri = requests.get(oriLink)
