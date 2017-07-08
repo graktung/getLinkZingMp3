@@ -27,16 +27,29 @@ except:
 
 from sys import argv
 
-standardLenArgv = 3
+standardLenArgv = 2
 if len(argv) == standardLenArgv:
 	oriLink = argv[1]
-	filenameToSave = argv[2]
 	print('[+] LinkOfSong:', oriLink)
-	print('[+] filenameToSave:', filenameToSave)
 else:
 	print("[X] run script by command:\n\
-		==> python getLinkZingMp3.py linkOfSong filenameToSave")
+		==> python getLinkZingMp3.py linkOfSong")
 	exit()
+
+try:
+	requestOri = requests.get(oriLink)
+	HTMLOri = requestOri.text
+	regexTitle = r'<title>.+\|'
+	matchTitle = re.search(regexTitle, HTMLOri)
+	if matchTitle is not None:
+		filenameToSave = matchTitle.group().rstrip(' |').replace('<title>', '') + '.mp3'
+	else:
+		filenameToSave = 'Unknow.mp3'
+
+except:
+	print('[X] Something went wrong when trying to get source from', oriLink)
+	exit()
+
 
 oriIDLink = oriLink.split('/')[-1].split('.')[0]
 linkEmbed = 'http://mp3.zing.vn/embed/song/' + oriIDLink
@@ -54,7 +67,12 @@ except:
 print('[*] Getting source ID...')
 regexData_xml_get_source = r'data-xml="\/json\/song\/get-source\/\w+"'
 data_xml_get_source = re.search(regexData_xml_get_source, HTMLEmbed)
-sourceID = data_xml_get_source.group().rstrip('"').split('/')[-1]
+if data_xml_get_source is not None:
+	sourceID = data_xml_get_source.group().rstrip('"').split('/')[-1]
+else:
+	print('[X] Cannot find the {}'.format("'data_xml'"))
+	exit()
+
 print('[+] Source ID:', sourceID)
 
 print('[*] Sending request to get XML Data...')
@@ -70,7 +88,13 @@ except:
 print('[*] Get link source...')
 regexSource = r'http:\/\/zmp3-mp3-s1-tr.zadn.vn\/\w+\/\w+\?key=\w+&expires=\d+'
 matchSource = re.search(regexSource, HTMLXML)
-linkSource = matchSource.group()
+
+if matchSource is not None:
+	linkSource = matchSource.group()
+	print('[+] Link Source:', linkSource)
+else:
+	print('[X] Cannot find {}'.format("'Link Source'"))
+	exit()
 
 print('[*] Saving file...')
 try:
