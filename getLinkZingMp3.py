@@ -1,19 +1,28 @@
 try:
 	import requests
+except ModuleNotFoundError:
+	print('[X] Module {} not found.'format("'requests'"))
+	exit()	
 except:
-	print('[X] Module requests not found.')
+	print('[X] Something went wrong when trying to import module', "'requests'")
 	exit()
 
 try:
 	import re
-except:
-	print('[X] Module re not found.')
+except ModuleNotFoundError:
+	print('[X] Module {} not found.'format("'re'"))
+	exit()
+except:	
+	print('[X] Something went wrong when trying to import module', "'re'")
 	exit()
 
 try:
 	import urllib.request as urRequest
+except ModuleNotFoundError:
+	print('[X] Module {} not found.'format("'urllib.request'"))
+	exit()
 except:
-	print('[X] Module urrlib.request not found')
+	print('[X] Something went wrong when trying to import module', "'urllib.request'")
 	exit()
 
 from sys import argv
