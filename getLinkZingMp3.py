@@ -50,23 +50,9 @@ except:
 	print('[X] Something went wrong when trying to get source from', oriLink)
 	exit()
 
-
-oriIDLink = oriLink.split('/')[-1].split('.')[0]
-linkEmbed = 'http://mp3.zing.vn/embed/song/' + oriIDLink
-print('[+] LinkEmbed:', linkEmbed)
-print('[*] Sending request...')
-
-try:
-	requestEmbed = requests.get(linkEmbed)
-	HTMLEmbed = requestEmbed.text
-	print('[+] Got HTML Source from {} successfully!'.format(linkEmbed))
-except:
-	print('[X] Something went wrong when trying to send request to', linkEmbed)
-	exit()
-
 print('[*] Getting source ID...')
 regexData_xml_get_source = r'data-xml="\/json\/song\/get-source\/\w+"'
-data_xml_get_source = re.search(regexData_xml_get_source, HTMLEmbed)
+data_xml_get_source = re.search(regexData_xml_get_source, HTMLOri)
 if data_xml_get_source is not None:
 	sourceID = data_xml_get_source.group().rstrip('"').split('/')[-1]
 else:
