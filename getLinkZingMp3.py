@@ -1,7 +1,7 @@
 try:
 	import requests
 except ModuleNotFoundError:
-	print('[X] Module {} not found.'format("'requests'"))
+	print('[X] Module {} not found.'.format("'requests'"))
 	exit()	
 except:
 	print('[X] Something went wrong when trying to import module', "'requests'")
@@ -10,7 +10,7 @@ except:
 try:
 	import re
 except ModuleNotFoundError:
-	print('[X] Module {} not found.'format("'re'"))
+	print('[X] Module {} not found.'.format("'re'"))
 	exit()
 except:	
 	print('[X] Something went wrong when trying to import module', "'re'")
@@ -19,7 +19,7 @@ except:
 try:
 	import urllib.request as urRequest
 except ModuleNotFoundError:
-	print('[X] Module {} not found.'format("'urllib.request'"))
+	print('[X] Module {} not found.'.format("'urllib.request'"))
 	exit()
 except:
 	print('[X] Something went wrong when trying to import module', "'urllib.request'")
